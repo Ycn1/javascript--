@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>汇率的计算</title>
+	<script type="text/javascript">
+		(function(w){
+			function Local(name){
+				this.name=name;
+				var foreigns=[];
+				this.init(name);
+				this.oInput='';
+			}
+			Local.prototype={
+				constructor:Local,
+				init:function(name){
+					var oP = document.createElement('p');
+					oP.innerHTMl=name;
+					this.oInput=document.createElement('input');
+					oP.appendChild(this.oInput);
+					document.body.appendChild(oP);
+				},
+				register:function(foreign){
+					this.foreigns.push(foreign);
+				},
+				publish:function(){
+					this.oInput.oninput=function(){
+						for(var i=0;i<this.foreigns.length;i++){
+							this.foreigns[i].listen(this.oInput.value);
+						}
+					}
+				}
+			},
+			w.Local=Local;
+		})(window);
+		(function(w){
+			function Foreign(name,rate,local){
+				local.register(this);
+				this.name=name;
+				this.rate=rate;
+				this.init(name);
+			}
+			Foreign.prototype={
+				constructor:Foreign,
+				init:function(name){
+					var oP = document.createElement('p');
+					oP.innerHTMl=name;
+					this.oInput=document.createElement('input');
+					oP.appendChild(this.oInput);
+					document.body.appendChild(oP);
+				},
+				listen:function(val){
+					this.oInput.value=val/this.rate;
+				}
+			}
+			w.Foreign=Foreign;
+		})(window);
+		var cny = new Local("人民币");	
+		//var jpy = new Foreign('日元',20,cny);
+		var usd = new Foreign('美元',6,cny);
+		cny.publish();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
