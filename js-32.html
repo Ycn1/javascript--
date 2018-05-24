@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>检查</title>
+	<script type="text/javascript">
+		/*console.log(a);
+		var result=0;
+		function sum(var i=0;i<5;i++){
+			return result +=i;
+		}
+		sum();
+		*/
+		//函数内部写变量的时候，如果没有var则系统认为是全局变量。
+		var name1='def';
+		function name(){
+			 var name2='456';
+			console.log(name1);
+		}
+		name();
+		console.log(name2);
+		//封闭空间函数
+		(function(){
+			console.log("abc");
+		})();
+		//有时候会在函数开头先放一个分号，是为了防止上面的结尾没有加分号
+		;(function(){
+			console.log("123");
+		})();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
