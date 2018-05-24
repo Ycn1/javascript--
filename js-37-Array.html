@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组进阶</title>
+	<script type="text/javascript">
+		//forEach遍历不好新生成数组，没有返回值
+		var arr =[10,23,33,25,53,67];
+		var arr1=arr.forEach(function(value,index){
+			console.log("index"+index +"::"+value);
+		});
+		console.log(arr1);
+		//map映射有返回值，如果前面不定义arr2的时候返回原数组，有arr2的时候返回值全是10
+		var arr2 = arr.map(function(value,index){
+			return 10;
+		});
+		console.log(arr2);
+		//过滤,如果有满足条件的值，则返回到新的数组里面
+		var arr3 = arr.filter(function(value,index){
+			return value>=50;
+		})
+		console.log(arr3);
+		//全真判断。所有值都满足条件，则返回true,有一个不满足，则返回值false
+		var arr4 = arr.every(function(value,index){
+			return value>10;
+		})
+		console.log(arr4);
+		//有真判断，有真的就会返回真
+		var arr5 = arr.some(function(value,index){
+			return value>59;
+		})
+		console.log(arr5);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
