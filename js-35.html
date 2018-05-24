@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>皇帝上朝</title>
+	<script type="text/javascript">
+		/*
+		(function(w){
+			function King(){
+				this.name="陛下";
+				this.id=Math.random();
+			}
+				King.prototype={
+					constructor:King,
+					__proto__:Object.prototype,
+					say:function(){
+						console.log(this.name+this.id+"平身");
+					},	
+				}
+				King.getKing=(function(){
+					var King1=null;
+					return function(){
+						if(!King1){
+						  King1 = new King;
+						}
+						return King1;
+					}
+					w.King=King;
+				})()
+			
+			w.King=King;
+		})(window);
+		
+		for(var i=1;i<=5;i++){
+			console.log("第"+i+"天");
+			King.getKing().say();
+		}
+		*/
+		
+		(function(w){
+			var king = null;
+			function King(){
+				var slef=this;
+				var fn = (function(){
+					return function(){
+						if(!king){
+							slef.name='陛下';
+							slef.id=Math.random();
+							king = slef;
+						}
+					return king;
+					}
+				})();
+				return fn();
+				/*
+					if(!king){
+						this.name="陛下";
+						this.id=Math.ramdom();
+						king=this;
+					}
+					return king;
+				*/
+			}
+				King.prototype={
+					constructor:King,
+					__proto__:Object.prototype,
+					say:function(){
+						console.log(this.name+this.id+"平身");
+					},	
+				}
+				King.getKing=(function(){
+					var King1=null;
+					return function(){
+						if(!King1){
+						  King1 = new King;
+						}
+						return King1;
+					}
+					
+				})()
+			
+			w.King=King;
+		})(window);
+		
+		for(var i=1;i<=5;i++){
+			King.getKing().say();
+			};
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
